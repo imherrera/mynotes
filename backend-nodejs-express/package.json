@@ -1,0 +1,30 @@
+{
+  "name": "backend-nodejs-express",
+  "version": "1.0.0",
+  "description": "Backend de MyNotes",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "const express = require('express');"
+  },
+  "keywords": [
+    "const",
+    "app",
+    "=",
+    "exconst",
+    "port",
+    "=",
+    "3000",
+    "|",
+    "process.env.PORT;"
+  ],
+  "author": "Iann Gomez",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
