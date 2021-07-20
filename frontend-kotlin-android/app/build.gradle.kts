@@ -26,9 +26,15 @@ android {
             )
         }
     }
+    buildFeatures {
+        compose = true
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.0.0-rc02"
     }
     kotlinOptions {
         jvmTarget = "1.8"
@@ -44,4 +50,25 @@ dependencies {
     testImplementation("junit:junit:4.+")
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
+
+    // Compose
+    implementation ("androidx.compose.ui:ui:1.0.0-rc02")
+    implementation ("androidx.compose.ui:ui-util:1.0.0-rc02")
+
+    // Tooling support (Previews, etc.)
+    implementation ("androidx.compose.ui:ui-tooling:1.0.0-rc02")
+
+    // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
+    implementation ("androidx.compose.foundation:foundation:1.0.0-rc02")
+
+    // Material Design
+    implementation ("androidx.compose.material:material:1.0.0-rc02")
+
+    // Material design icons
+    implementation ("androidx.compose.material:material-icons-core:1.0.0-rc02")
+    implementation ("androidx.compose.material:material-icons-extended:1.0.0-rc02")
+
+    // Integration with activities
+    implementation ("androidx.activity:activity-compose:1.3.0-rc02")
+
 }
