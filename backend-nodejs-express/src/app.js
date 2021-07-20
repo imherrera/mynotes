@@ -10,7 +10,7 @@ mongoose.connect('mongodb://192.168.0.7:1/test', {
     useCreateIndex: true
 });
 
-const authRoute = require("./auth")
+const authRoute = require("../auth")
 
 app.use(express.json())
 
