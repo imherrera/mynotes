@@ -23,5 +23,8 @@
     "process.env.PORT;"
   ],
   "author": "Iann Gomez",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^2.0.12"
+  }
 }
