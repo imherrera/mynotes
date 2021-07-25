@@ -52,7 +52,22 @@ router.post("/create", (req, res, next) => {
 
 })
 router.patch("/update", (req, res, next) => {
-      
+    const username = req.query.username
+    const token = req.query.token
+    const noteId = req.query.note_id
+    const noteChanges = req.body
+
+    Token.tokenIsValid(token, username, () => {
+        Note.findOneAndUpdate({
+            id: noteId
+        }, noteChanges, { upsert: false }).then(() => {
+            res.status(200).json({
+                "message": "Tu nota fue editada correctamente"
+            })
+        })
+    }, (error) => {
+        res.status(401).json(error)
+    })
 })
 
 module.exports = router
