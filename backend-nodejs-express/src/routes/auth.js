@@ -2,6 +2,7 @@ const mongoose = require("mongoose")
 const express = require("express")
 const router = express.Router()
 const User = require("../schema/user")
+const { tokenIsValid, createToken } = require("../schema/token")
 
 router.post('/login', (req, res, next) => {
     const username = req.body.username.trim()
@@ -12,7 +13,7 @@ router.post('/login', (req, res, next) => {
             "error": "Debes rellenar todos los campos"
         })
     };
-    
+
     User.find({
         username: username
     }).then(users => {
@@ -24,9 +25,13 @@ router.post('/login', (req, res, next) => {
         }
         const user = users[0]
         if (user.password == password) {
-            res.status(200).json({
-                "message": "Iniciando sesion",
-                "token": 123
+            createToken(username).then(tkn => {
+                res.status(200).json({
+                    "message": "iniciando sesion",
+                    "token": tkn
+                })
+            }).catch(err => {
+                console.error(err)
             })
             return
         }
@@ -66,7 +71,6 @@ router.post('/sign-in', (req, res, next) => {
     User.find({
         username: username
     }).then(user => {
-        console.log(user)
         if (user.length > 0) {
             res.status(401).json({
                 "error": "Este nombre ya esta en uso"
@@ -80,9 +84,14 @@ router.post('/sign-in', (req, res, next) => {
         }, { collection: "users" })
 
         newUser.save().then(result => {
-            res.status(200).json({
-                "message": "el usuario se a creado correctamente"
+            createToken(username).then(tkn => {
+                res.status(200).json({
+                    "message": "el usuario se a creado correctamente",
+                    "token": tkn
+                })
             })
+
+
         })
 
     }).catch(err => {
