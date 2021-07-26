@@ -10,23 +10,14 @@ const Token = mongoose.model(
     })
 );
 
-async function tokenIsValid(token, username, onSuccess, onReject) {
+async function tokenIsValid(token, username) {
     const userToken = await Token.find({
         username: username
     })
     if (userToken.length == 0) {
-        onReject({
-            'error': 'este usuario no existe'
-        })
-        return
+        return false
     }
-    if (userToken[0].token === token) {
-        onSuccess()
-    } else {
-        onReject({
-            'error': 'tu sesion es invalida'
-        })
-    }
+    return userToken[0].token === token
 }
 
 async function createToken(username) {
