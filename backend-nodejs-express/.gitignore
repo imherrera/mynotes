@@ -1,1 +1,4 @@
 node_modules/
+src/mynotes-key.json
+src/schema/token.js
+src/schema/user.js

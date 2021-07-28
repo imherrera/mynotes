@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const note = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
     id: String,
-    owner_name: String,
+    uid: String,
     text: String,
     creation_date: String,
     edition_date: String,

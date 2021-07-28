@@ -90,14 +90,12 @@ router.post('/sign-in', (req, res, next) => {
                     "token": tkn
                 })
             })
-
-
         })
 
     }).catch(err => {
         console.error(err)
     })
-
+    
 });
 
 module.exports = router
