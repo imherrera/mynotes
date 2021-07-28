@@ -41,7 +41,7 @@ router.post("/create", (req, res, next) => {
 
 
 router.patch("/update", (req, res, next) => {
-    const uid = req.query.username;
+    const uid = req.query.uid;
     const noteId = req.query.note_id;
     const noteChanges = req.body;
 
@@ -57,7 +57,7 @@ router.patch("/update", (req, res, next) => {
 
 
 router.get("/remove", (req, res, next) => {
-    const uid = req.query.username;
+    const uid = req.query.uid;
     const noteId = req.query.note_id;
     Note.findOneAndRemove({
         id: noteId,
